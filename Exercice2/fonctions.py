@@ -5,16 +5,16 @@ from random import choice
 
 def retreive_score(): 
 	if os.path.exists(score_file):
-		score = open (score_file, "rb")
+		score = open(score_file, "rb")
 		unpickle_file = pickle.Unpickler(score)
 		scores = unpickle_file.load()
 		score.close()
 	else:
-		scores {}
+		scores ={}
 	return scores
 
 	
-def save_score():
+def save_score(scores):
 		score = open (score_file, "wb")
 		mypickler = pickle.Pickler(score)
 		mypickler.dump(scores)
@@ -46,7 +46,7 @@ def retreive_mask_word(complete_word,found_letter):
 	mask_word=""
 	for letters in complete_word: 
 		if letters in found_letter:
-			mask_word += letter
+			mask_word += letters
 		else:
 			mask_word +="*"
 	return mask_word
